@@ -10,21 +10,26 @@ export default defineConfig({
     hmr: true,         // Hot Module Replacement (HMR) en desarrollo
   },
   build: {
-    outDir: 'dist/inventario-app', // Directorio donde se guardará la build de producción
+    outDir: 'dist',               // Directorio donde se guardará la build de producción
     minify: 'esbuild',            // Minificación del código
     emptyOutDir: true,            // Limpia el directorio de salida antes de construir
     sourcemap: false,             // Desactiva los sourcemaps en producción
     target: 'esnext',             // Objetivo de compilación para navegadores modernos
     cssCodeSplit: true,           // Divide el CSS en archivos separados
-  },
-  onServerClose() {
-    console.log('El servidor se ha cerrado y el puerto ha sido liberado.');
-    // Aquí puedes agregar lógica para liberar recursos si es necesario
+    rollupOptions: {
+      input: '/index.html',       // Asegura que la entrada sea el archivo correcto
+    },
   },
   resolve: {
     alias: {
-      '@': '/src', // Alias para rutas más limpias en tu proyecto
+      '@': '/src',                // Alias para rutas más limpias en tu proyecto
     },
   },
-  base: './', // Asegura rutas relativas para desplegar en entornos como Vercel
+  base: './',                     // Asegura rutas relativas para desplegar en entornos como Vercel
+  // Este es para solucionar problemas relacionados con el tipo MIME en Vercel.
+  optimizeDeps: {
+    esbuildOptions: {
+      target: 'esnext',           // Asegura que la aplicación se construya con ESNext para compatibilidad
+    },
+  },
 });
