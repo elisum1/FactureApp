@@ -8,7 +8,7 @@ import UsuariosDashboard from './dashboards/usuariosDashboard';
 // Componente de pantalla de bienvenida
 const WelcomeScreen = ({ onFinish }) => {
     const [letters, setLetters] = useState([]);
-    const welcomeText = 'Maauro Services';
+    const welcomeText = 'Facture Services';
 
     useEffect(() => {
         const timer = setTimeout(onFinish, 7000);
@@ -210,7 +210,7 @@ const MainMenu = () => {
                             <div className="flex items-center justify-center w-28 h-28 bg-blue-950 rounded-full shadow-lg mb-20">
                                 <FaKeyboard size={80} className="text-white" />
                             </div>
-                            <h1 className="text-6xl font-extrabold text-white mb-20">Mauro Services</h1>
+                            <h1 className="text-6xl font-extrabold text-white mb-20">Facture Services</h1>
                         </div>
 
                         <div className="grid grid-cols-3 gap-6 max-w-2xl h-[450px] text-center">
